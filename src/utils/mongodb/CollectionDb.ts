@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongodb'
+
 import ClientDb from './ClientDb'
 
 class CollectionDb {
@@ -5,17 +7,25 @@ class CollectionDb {
 
 	constructor(collectionName: string) {
 		this.collectionName = collectionName
-
-
 	}
 
 	async create(data: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			ClientDb.getInstance().getCollection(this.collectionName).createIndex(data).toArray((err: any, res: any) => {
+			let document
+			if (!data._id) {
+				document = {
+					_id: new ObjectId(),
+					...data,
+				}
+			} else {
+				document = { ...data }
+			}
+
+			ClientDb.getInstance().getCollection(this.collectionName).insertMany([document], (err: any, res: any) => {
 				if (err) {
 					reject(err)
 				}
-				resolve(res)
+				resolve(res.ops[0])
 			})
 		})
 	}

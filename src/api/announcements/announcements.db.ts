@@ -13,7 +13,7 @@ class AnnouncementsDb extends CollectionDb {
 		console.log('search')
 
 
-		const result = await super.find({ _id: new ObjectId('5fcf9889eac7454cc49b4d87') })
+		const result = await super.find({ id: "713705" })
 
 
 		console.log(result)
