@@ -4,6 +4,7 @@
 	},
 
 	"mongodb": {
-		"url": ""
+		"database": "test",
+		"url": "mongodb+srv://cesi:123@ai-db.jkkh4.mongodb.net/test"
 	}
 }
