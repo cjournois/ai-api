@@ -1,5 +1,6 @@
 import express, {Express} from 'express'
-import config from 'config/index.ts'
+
+import config from './config'
 
 class App {
 	private app: Express | undefined;
