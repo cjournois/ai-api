@@ -1,15 +1,38 @@
-import MongoDb from '../../utils/MongoDb'
+import {Request} from 'express'
 
+import Client from '../../utils/mongodb/Client'
 import {IAnnouncement} from '../../models'
-import {NextFunction, Request, Response} from 'express'
 
-class AnnouncementsDb extends MongoDb {
+class AnnouncementsDb {
+	private db: any
+
 	constructor() {
-		super('Annonces');
+		this.db = Client.getInstance().getDb('Annonces')
 	}
 
-	public async search(req: Request, res: Response, next: NextFunction): Promise<Array<IAnnouncement>> {
-		return await super.findAll()
+	public async search(req: Request) {
+		console.log('search')
+
+	}
+
+	public async create(req: Request) {
+		console.log('create')
+
+	}
+
+	public async findOne(req: Request) {
+		console.log('findOne')
+
+	}
+
+	public async updateOne(req: Request) {
+		console.log('updateOne')
+
+	}
+
+	public async deleteOne(req: Request) {
+		console.log('deleteOne')
+
 	}
 }
 

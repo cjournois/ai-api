@@ -1,33 +1,71 @@
+import http, {Server} from 'http'
 import express, {Express} from 'express'
-import http from 'http'
-import announcement from './routes/announcement'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+
 import config from './config'
-import ClientDb from './utils/ClientDb'
-import MongoDb from './utils/MongoDb'
+import Client from './utils/mongodb/Client'
+import {apiRouter} from './api'
 
 class App {
     private app: Express | undefined;
-    private server: any;
+    private server: Server | undefined;
 
-    public start() {
-        this.app = express()
-        this.server = http.createServer(this.app).listen(3000)
-        this.app.use('/api', announcement)
-        console.log(config)
+	//==================================================================================================================
+
+    private startServerAsync(port: number, hostname: string): Promise<void> {
+	    return new Promise((resolve) => {
+	    	if (this.server) {
+			    this.server.listen(port, hostname, () => resolve())
+		    }
+	    })
     }
 
-
-    private middleware() {
-
+    private stopServerAsync(): Promise<void> {
+	    return new Promise((resolve) => {
+		    if (this.server) {
+		        this.server.close(() => resolve())
+		    }
+	    })
     }
 
+	//==================================================================================================================
+
+	private middlewares() {
+		// WARN: Cors privacy
+		const corsOptions = {
+			origin(origin: any, callback: any) {
+				const isWhitelisted = config.cors.whitelist.includes(origin)
+				callback(null, isWhitelisted)
+			},
+			credentials: true,
+		}
+
+		if (this.app) {
+			this.app.use(cors(corsOptions))
+			this.app.use(bodyParser.json());
+		}
 	}
 
-	private async connect() {
-		const clientDb = ClientDb.getInstance()
-		await clientDb.connect(config.mongodb.url, {
-			useUnifiedTopology: true
-		})
+	public async start() {
+    	try {
+			this.server = http.createServer(this.app)
+			await this.startServerAsync(config.server.port, config.server.hostname)
+	        console.log('server connected')
+
+			await Client.getInstance().connect(config.mongodb.url, {
+				useUnifiedTopology: true
+			})
+			console.log('mongodb connected')
+
+			this.app = express()
+		    this.middlewares()
+
+		    // Use main router
+			this.app.use('/api', apiRouter)
+	    } catch (err) {
+    		console.error('error', err)
+	    }
 	}
 }
 
