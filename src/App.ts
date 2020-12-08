@@ -6,11 +6,16 @@ class App {
 	private app: Express | undefined;
 
 	public start() {
-
-		console.log(process.env)
-
 		this.app = express()
 		console.log(config)
+	}
+
+	private connect() {
+
+	}
+
+	private middleware() {
+
 	}
 }
 
