@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import json5 from 'json5'
 
 //======================================================================================================================
 
@@ -31,6 +30,6 @@ if (!process.env.NODE_CONFIG_PATH) {
 }
 
 // read, parse and validate config file
-const config: IConfig = <IConfig>json5.parse(String(fs.readFileSync(path.resolve(process.env.NODE_CONFIG_PATH))))
+const config: IConfig = <IConfig>JSON.parse(String(fs.readFileSync(path.resolve(process.env.NODE_CONFIG_PATH))))
 
 export default config
