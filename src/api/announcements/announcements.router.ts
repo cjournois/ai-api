@@ -1,6 +1,6 @@
-import {Router} from 'express'
+import { Router } from 'express'
 
-import {create, deleteOne, findOne, search, updateOne} from './announcements.controller'
+import { create, deleteOne, findOne, search, updateOne } from './announcements.controller'
 
 //======================================================================================================================
 

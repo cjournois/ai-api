@@ -1,14 +1,12 @@
 import { ObjectId } from 'mongodb'
-import {Request, RequestParamHandler} from 'express'
+import { Request } from 'express'
 
 import CollectionDb from '../../utils/mongodb/CollectionDb'
-import {IAnnouncement} from '../../models'
+import { CollectionName } from '../../utils/enums'
 
 class AnnouncementsDb extends CollectionDb {
-	private announcementsDb: any
-
 	constructor() {
-		super('Annonces')
+		super(CollectionName.Announcements)
 	}
 
 	public async search(req: Request) {
@@ -23,23 +21,24 @@ class AnnouncementsDb extends CollectionDb {
 
 	}
 
-	public async create(req: Request) {
-		console.log('create')
-
+	public async create({ body }: Request): Promise<any> {
+		console.log('create:', body)
+		return super.create(body)
 	}
 
-	public async findOne({ params: { id } }: Request) {
+	public async findOne({ params: { id } }: Request): Promise<any> {
 		console.log('findOne:', id)
 		return super.findOne({ _id: new ObjectId(id) })
 	}
 
-	public async updateOne({ body }: Request) {
-		console.log('updateOne')
+	public async updateOne({ params: { id }, body }: Request): Promise<void> {
+		console.log('updateOne:', id, body)
+		return super.updateOne({ _id: new ObjectId(id) }, body)
 	}
 
-	public async deleteOne(req: Request) {
+	public async deleteOne({ params: { id } }: Request): Promise<void> {
 		console.log('deleteOne')
-
+		return super.deleteOne({ _id: new ObjectId(id) })
 	}
 }
 

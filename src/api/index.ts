@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import {announcementsRouter} from './announcements/announcements.router'
+import { announcementsRouter } from './announcements/announcements.router'
 
 //======================================================================================================================
 

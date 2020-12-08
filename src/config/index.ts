@@ -31,6 +31,6 @@ if (!process.env.NODE_CONFIG_PATH) {
 }
 
 // read, parse and validate config file
-const config: IConfig = <IConfig> json5.parse(String(fs.readFileSync(path.resolve(process.env.NODE_CONFIG_PATH))))
+const config: IConfig = <IConfig>json5.parse(String(fs.readFileSync(path.resolve(process.env.NODE_CONFIG_PATH))))
 
 export default config

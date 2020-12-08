@@ -1,18 +1,19 @@
-import {MongoClient, Db} from 'mongodb'
+import { Db, MongoClient } from 'mongodb'
 import IAnnouncement from '../../models/IAnnouncement'
 
-class Client {
-	private static instance: Client
+class ClientDb {
+	private static instance: ClientDb
 
 	private db: Db | undefined
 
-	private constructor() {}
+	private constructor() {
+	}
 
-	public static getInstance(): Client {
-		if (!Client.instance) {
-			Client.instance = new Client()
+	public static getInstance(): ClientDb {
+		if (!ClientDb.instance) {
+			ClientDb.instance = new ClientDb()
 		}
-		return Client.instance
+		return ClientDb.instance
 	}
 
 	public connect(url: string, option: any): Promise<void> {
@@ -33,4 +34,4 @@ class Client {
 	}
 }
 
-export default Client
+export default ClientDb

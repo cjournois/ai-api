@@ -1,4 +1,4 @@
-import Client from '../../utils/mongodb/Client'
+import ClientDb from './ClientDb'
 
 class CollectionDb {
 	private collectionName: string
@@ -9,20 +9,20 @@ class CollectionDb {
 
 	}
 
-	async create(object: any): Promise<any> {
+	async create(data: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			Client.getInstance().getCollection(this.collectionName).createIndex(object).toArray((err: any, doc: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).createIndex(data).toArray((err: any, res: any) => {
 				if (err) {
 					reject(err)
 				}
-				resolve(doc)
+				resolve(res)
 			})
 		})
 	}
 
 	async find(query: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			Client.getInstance().getCollection(this.collectionName).find(query).toArray((err: any, docs: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).find(query).toArray((err: any, docs: any) => {
 				if (err) {
 					reject(err)
 				}
@@ -33,18 +33,18 @@ class CollectionDb {
 
 	async findOne(query: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			Client.getInstance().getCollection(this.collectionName).findOne(query).toArray((err: any, docs: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).find(query).toArray((err: any, docs: any) => {
 				if (err) {
 					reject(err)
 				}
-				resolve(docs)
+				resolve(docs[0])
 			})
 		})
 	}
 
-	async updateOne(query: any): Promise<any> {
+	async updateOne(query: any, data: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			Client.getInstance().getCollection(this.collectionName).deleteOne(query).toArray((err: any, docs: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).deleteOne(query).toArray((err: any, docs: any) => {
 				if (err) {
 					reject(err)
 				}
@@ -55,7 +55,7 @@ class CollectionDb {
 
 	async deleteOne(query: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			Client.getInstance().getCollection(this.collectionName).deleteOne(query).toArray((err: any, docs: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).deleteOne(query).toArray((err: any, docs: any) => {
 				if (err) {
 					reject(err)
 				}
