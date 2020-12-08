@@ -1,8 +1,7 @@
 {
 	"presets": [
-		["@babel/env", {
-			"modules": "umd"
-		}]
+		["@babel/preset-typescript"],
+		["@babel/preset-env"]
 	],
 
 	"plugins": [
@@ -10,6 +9,8 @@
 			"root": ["./src"]
 		}],
 		["@babel/plugin-syntax-dynamic-import"],
+
+		["@babel/plugin-proposal-class-properties"],
 		["@babel/plugin-proposal-pipeline-operator", {
 			"proposal": "minimal"
 		}]
