@@ -49,6 +49,9 @@ class App {
 
 	public async start() {
     	try {
+		    this.app = express()
+		    this.middlewares()
+
 			this.server = http.createServer(this.app)
 			await this.startServerAsync(config.server.port, config.server.hostname)
 	        console.log('server connected')
@@ -57,9 +60,6 @@ class App {
 				useUnifiedTopology: true
 			})
 			console.log('mongodb connected')
-
-			this.app = express()
-		    this.middlewares()
 
 		    // Use main router
 			this.app.use('/api', apiRouter)
