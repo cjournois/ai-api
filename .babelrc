@@ -1,0 +1,17 @@
+{
+	"presets": [
+		["@babel/env", {
+			"modules": "umd"
+		}]
+	],
+
+	"plugins": [
+		["module-resolver", {
+			"root": ["./src"]
+		}],
+		["@babel/plugin-syntax-dynamic-import"],
+		["@babel/plugin-proposal-pipeline-operator", {
+			"proposal": "minimal"
+		}]
+	]
+}

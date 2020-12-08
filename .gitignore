@@ -1,0 +1,21 @@
+# OSX
+.DS_Store
+
+# IntelliJ
+.idea
+
+# Visual Studio Code
+.tmp
+.vscode
+
+# node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Husky
+.husky/_
+.husky/.gitignore
+
+# Build and cache
+dist/

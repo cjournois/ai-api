@@ -1,0 +1,19 @@
+{
+	"name": "ai-api",
+	"version": "0.1.0",
+	"description": "Read the README.md",
+	"main": "index.js",
+	"license": "MIT",
+	"homepage": "https://github.com/cjournois/ai-api#readme",
+	"bugs": {
+		"url": "https://github.com/cjournois/ai-api/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cjournois/ai-api.git"
+	},
+	"scripts": {
+		"debug": "",
+		"debug:win": ""
+	}
+}
