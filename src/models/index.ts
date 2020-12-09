@@ -1,3 +1,3 @@
 export type { default as IVector } from './IVector'
-export type { default as IWaldo } from './IWaldo'
-export type { default as IWaldoLocation } from './IWaldoLocation'
+export type { default as ICharlie } from './ICharlie'
+export type { default as ILocation } from './ILocation'

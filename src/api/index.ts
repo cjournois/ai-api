@@ -1,14 +1,13 @@
 import { Router } from 'express'
 
-import { waldosRouter } from './waldos/waldos.router'
+import { charliesRouter } from './charlies/charlies.router'
 
 //======================================================================================================================
 
-// @ts-ignore
-const apiRouter: Router = new Router()
+const apiRouter = Router()
 
-apiRouter.use('/waldos', waldosRouter)
+apiRouter.use('/charlies', charliesRouter)
 
 export {
-	apiRouter
+	apiRouter,
 }

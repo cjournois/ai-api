@@ -9,6 +9,7 @@ import { apiRouter } from './api'
 
 class App {
 	private app: Express | undefined
+
 	private server: Server | undefined
 
 	//==================================================================================================================
@@ -38,7 +39,7 @@ class App {
 				const isWhitelisted = config.cors.whitelist.includes(origin)
 				callback(null, isWhitelisted)
 			},
-			credentials: true
+			credentials: true,
 		}
 
 		if (this.app) {
@@ -57,7 +58,7 @@ class App {
 			console.log('server connected')
 
 			await ClientDb.getInstance().connect(config.mongodb.url, {
-				useUnifiedTopology: true
+				useUnifiedTopology: true,
 			})
 			console.log('mongodb connected')
 

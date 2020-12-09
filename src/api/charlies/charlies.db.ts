@@ -1,24 +1,28 @@
-import {ObjectId} from 'mongodb'
-import {Request} from 'express'
+import { ObjectId } from 'mongodb'
+import { Request } from 'express'
 
-import {IWaldo} from '../../models'
 import CollectionDb from '../../utils/mongodb/CollectionDb'
 import { CollectionName } from '../../utils/enums'
+import { ICharlie } from '../../models'
 
-class AnnouncementsDb extends CollectionDb {
+class CharliesDb extends CollectionDb {
 	constructor() {
-		super(CollectionName.Waldos)
+		super(CollectionName.Charlies)
 	}
 
-	public async search(req: Request) {
+	public async search({ query: { sort } }: Request) {
 		console.log('search')
-		return super.find({})
-
+		const filers: any = {}
+		if (sort) {
+			const [field, orderBy] = (<string> sort).split('|')
+			filers[field] = orderBy === 'asc' ? 1 : -1
+		}
+		return super.find(filers)
 	}
 
 	public async create({ body }: Request): Promise<any> {
 		console.log('create:', body)
-		return super.create(body)
+		return super.create(<ICharlie>body)
 	}
 
 	public async findOne({ params: { id } }: Request): Promise<any> {
@@ -37,4 +41,4 @@ class AnnouncementsDb extends CollectionDb {
 	}
 }
 
-export default new AnnouncementsDb()
+export default new CharliesDb()
