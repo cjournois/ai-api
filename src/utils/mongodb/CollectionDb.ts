@@ -65,7 +65,7 @@ class CollectionDb {
 
 	async updateOne(query: any, data: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			ClientDb.getInstance().getCollection(this.collectionName).updateOne(query, data, (err: any, res: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).updateOne(query, {$set: data}, (err: any, res: any) => {
 				if (err) {
 					reject(err)
 				}
