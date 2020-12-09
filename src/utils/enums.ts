@@ -1,3 +1,3 @@
 export enum CollectionName {
-	Announcements = 'Annonces',
+	Waldos = 'waldos',
 }

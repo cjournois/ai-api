@@ -1,5 +1,5 @@
 import { Db, MongoClient } from 'mongodb'
-import IAnnouncement from '../../models/IAnnouncement'
+import IWaldo from '../../models/IWaldo'
 
 class ClientDb {
 	private static instance: ClientDb
@@ -30,7 +30,7 @@ class ClientDb {
 
 	public getCollection(collectionName: string): any {
 		// @ts-ignore
-		return this.db.collection<IAnnouncement>(collectionName)
+		return this.db.collection<IWaldo>(collectionName)
 	}
 }
 
