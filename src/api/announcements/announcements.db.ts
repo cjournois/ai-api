@@ -9,16 +9,44 @@ class AnnouncementsDb extends CollectionDb {
 		super(CollectionName.Announcements)
 	}
 
-	public async search(req: Request) {
-		console.log('search')
+	public async search({ query: { page, sort, between } }: Request) {
+		console.log('search:', page, sort, between)
+		// @ts-ignore
+		const [start, end] = typeof between === 'string'
+			? between.split('|')
+			// @ts-ignore
+			: [new Date(null).toISOString(), new Date(9999).toISOString()]
 
+		const { metadata, data } = (await super.aggregate([{
+			$sort: {
+				host_since: sort === 'asc' ? 1 : -1
+			}
+		}, {
+			$match: {
+				'host_since': {
+					$gte: start,
+					$lte: end
+				}
+			}
+		}, {
+			$facet: {
+				metadata: [ { $count: "total" } ],
+				data: [{
+					$skip: (Number(page) - 1 || 0)  * 10
+				}, {
+					$limit: 10
+				}]
+			}
+		}]))[0]
 
-		const result = await super.find({ id: "713705" })
-
-
-		console.log(result)
-
-
+		return {
+			metadata: {
+				count: metadata[0].total,
+				pages: Math.round((metadata[0].total / 10) + 0.5),
+				page
+			},
+			data
+		}
 	}
 
 	public async create({ body }: Request): Promise<any> {
