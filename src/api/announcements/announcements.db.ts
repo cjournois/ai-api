@@ -15,7 +15,7 @@ class AnnouncementsDb extends CollectionDb {
 		const [start, end] = typeof between === 'string'
 			? between.split('|')
 			// @ts-ignore
-			: [new Date(null).toISOString(), new Date(9999, 1, 1).toISOString()]
+			: [new Date(null), new Date(9999, 1, 1)]
 
 		const { metadata, data } = (await super.aggregate([{
 			$sort: {
