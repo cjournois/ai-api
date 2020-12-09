@@ -1,0 +1,72 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"airbnb-base"
+	],
+	"rules": {
+		"comma-dangle": ["error", "always-multiline"],
+		"object-curly-newline": ["off"],
+		"linebreak-style": ["error", "unix"],
+		"indent": ["error", "tab"],
+		"no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+		"no-multiple-empty-lines": ["error", {
+			"max": 1,
+			"maxBOF": 1
+		}],
+		"no-irregular-whitespace": ["off"],
+		"no-sequences": ["error"],
+		"no-tabs": ["error", {
+			"allowIndentationTabs": true
+		}],
+		"max-len": ["error", {
+			"code": 100,
+			"ignoreComments": true,
+			"ignoreStrings": true,
+			"ignoreRegExpLiterals": true
+		}],
+		"quotes": ["error", "single"],
+		"semi": ["off"],
+		"spaced-comment": ["error", "always", {
+			"exceptions": ["-", "+", "=", "*", "\t"]
+		}],
+
+		"block-scoped-var": ["error"],
+		"camelcase": ["error"],
+		"class-methods-use-this": ["off"],
+		"consistent-return": ["off"],
+		"eqeqeq": ["error",	"always"],
+		"handle-callback-err": ["error"],
+		"import/extensions": ["warn", {
+			"js": "never",
+			"json": "always",
+			"db": "always",
+			"controller": "always",
+			"router": "always"
+		}],
+		"import/no-unresolved": ["off"],
+		"import/prefer-default-export": ["off"],
+		"max-classes-per-file": ["error", 2],
+		"no-console": ["error", {
+			"allow": ["log", "error"]
+		}],
+		"no-extra-boolean-cast": ["off"],
+		"no-labels": ["error"],
+		"no-plusplus": ["off"],
+		"no-return-assign": ["error", "always"],
+		"no-return-await": ["off"],
+		"no-use-before-define": ["error"],
+		"prefer-const": ["error"],
+
+		"import/no-extraneous-dependencies": ["error", {
+			"devDependencies": [
+				"**/*.test.ts",
+				"**/test.ts"
+			]
+		}],
+
+		"@typescript-eslint/no-explicit-any": ["off"],
+		"@typescript-eslint/explicit-module-boundary-types": ["off"]
+	}
+}
