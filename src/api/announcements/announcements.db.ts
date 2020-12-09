@@ -15,7 +15,7 @@ class AnnouncementsDb extends CollectionDb {
 		const [start, end] = typeof between === 'string'
 			? between.split('|')
 			// @ts-ignore
-			: [new Date(null), new Date(9999, 1, 1)]
+			: [null, '9999-01-1']
 
 		const { metadata, data } = (await super.aggregate([{
 			$sort: {
@@ -24,8 +24,8 @@ class AnnouncementsDb extends CollectionDb {
 		}, {
 			$match: {
 				'host_since': {
-					$gte: start,
-					$lte: end
+					$gte: new Date(start),
+					$lte: new Date(end)
 				}
 			}
 		}, {
