@@ -12,9 +12,9 @@ class CollectionDb {
 	async create(data: any): Promise<any> {
 		return new Promise((resolve, reject) => {
 			let document
-			if (!data.id) {
+			if (!data._id) {
 				document = {
-					id: new ObjectId(),
+					_id: new ObjectId(),
 					...data,
 				}
 			} else {

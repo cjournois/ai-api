@@ -3,6 +3,7 @@ import { Request } from 'express'
 
 import CollectionDb from '../../utils/mongodb/CollectionDb'
 import { CollectionName } from '../../utils/enums'
+import { ICharlie } from '../../models'
 
 class CharliesDb extends CollectionDb {
 	constructor() {
@@ -21,7 +22,7 @@ class CharliesDb extends CollectionDb {
 
 	public async create({ body }: Request): Promise<any> {
 		console.log('create:', body)
-		return super.create(body)
+		return super.create(<ICharlie>body)
 	}
 
 	public async findOne({ params: { id } }: Request): Promise<any> {
