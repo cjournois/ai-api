@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
 
-import WaldosDb from './waldos.db'
+import CharliesDb from './charlies.db'
 
 export async function search(req: Request, res: Response, next: NextFunction) {
 	try {
-		const results = await WaldosDb.search(req)
+		const results = await CharliesDb.search(req)
 
 		res.json(results)
 	} catch (err) {
@@ -14,7 +14,7 @@ export async function search(req: Request, res: Response, next: NextFunction) {
 
 export async function create(req: Request, res: Response, next: NextFunction) {
 	try {
-		const { _id } = await WaldosDb.create(req)
+		const { _id } = await CharliesDb.create(req)
 
 		res.json(_id)
 	} catch (err) {
@@ -24,7 +24,7 @@ export async function create(req: Request, res: Response, next: NextFunction) {
 
 export async function findOne(req: Request, res: Response, next: NextFunction) {
 	try {
-		const result = await WaldosDb.findOne(req)
+		const result = await CharliesDb.findOne(req)
 
 		res.json(result)
 	} catch (err) {
@@ -34,7 +34,7 @@ export async function findOne(req: Request, res: Response, next: NextFunction) {
 
 export async function updateOne(req: Request, res: Response, next: NextFunction) {
 	try {
-		await WaldosDb.updateOne(req)
+		await CharliesDb.updateOne(req)
 
 		res.status(204).send()
 	} catch (err) {
@@ -44,7 +44,7 @@ export async function updateOne(req: Request, res: Response, next: NextFunction)
 
 export async function deleteOne(req: Request, res: Response, next: NextFunction) {
 	try {
-		await WaldosDb.deleteOne(req)
+		await CharliesDb.deleteOne(req)
 
 		res.status(204).send()
 	} catch (err) {

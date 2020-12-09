@@ -1,8 +1,8 @@
 import IVector from './IVector'
 
-declare interface IWaldoLocation {
+declare interface ILocation {
 	min: IVector,
 	max: IVector,
 }
 
-export default IWaldoLocation
+export default ILocation

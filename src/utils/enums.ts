@@ -1,3 +1,3 @@
-export enum CollectionName {
-	Waldos = 'waldos',
+export const CollectionName = {
+	Charlies: 'charlies',
 }

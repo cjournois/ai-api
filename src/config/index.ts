@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-//======================================================================================================================
+//==================================================================================================
 
 interface IConfigServer {
 	hostname: string,
@@ -23,13 +23,15 @@ interface IConfig {
 	mongodb: IConfigMongoDb,
 }
 
-//======================================================================================================================
+//==================================================================================================
 
 if (!process.env.NODE_CONFIG_PATH) {
 	throw new Error('Missing NODE_CONFIG_PATH environment variable')
 }
 
 // read, parse and validate config file
-const config: IConfig = <IConfig>JSON.parse(String(fs.readFileSync(path.resolve(process.env.NODE_CONFIG_PATH))))
+const config: IConfig = <IConfig>JSON.parse(
+	String(fs.readFileSync(path.resolve(process.env.NODE_CONFIG_PATH))),
+)
 
 export default config

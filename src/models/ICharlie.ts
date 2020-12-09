@@ -1,14 +1,14 @@
 import { ObjectId } from 'mongodb'
 
 import IVector from './IVector'
-import IWaldoLocation from './IWaldoLocation'
+import ILocation from './ILocation'
 
-declare interface IWaldo {
+declare interface ICharlie {
 	_id: ObjectId,
 	name: string,
 	imagePath: string,
 	imageSize: IVector,
-	waldoLocation: Array<IWaldoLocation>,
+	locations: Array<ILocation>,
 }
 
-export default IWaldo
+export default ICharlie

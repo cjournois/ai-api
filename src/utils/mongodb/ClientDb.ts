@@ -1,13 +1,10 @@
 import { Db, MongoClient } from 'mongodb'
-import IWaldo from '../../models/IWaldo'
+import ICharlie from '../../models/ICharlie'
 
 class ClientDb {
 	private static instance: ClientDb
 
 	private db: Db | undefined
-
-	private constructor() {
-	}
 
 	public static getInstance(): ClientDb {
 		if (!ClientDb.instance) {
@@ -29,8 +26,7 @@ class ClientDb {
 	}
 
 	public getCollection(collectionName: string): any {
-		// @ts-ignore
-		return this.db.collection<IWaldo>(collectionName)
+		return this.db?.collection<ICharlie>(collectionName)
 	}
 }
 
