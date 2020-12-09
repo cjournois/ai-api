@@ -41,6 +41,17 @@ class CollectionDb {
 		})
 	}
 
+	async aggregate(aggregates: any): Promise<any> {
+		return new Promise((resolve, reject) => {
+			ClientDb.getInstance().getCollection(this.collectionName).aggregate(aggregates).toArray((err: any, docs: any) => {
+				if (err) {
+					reject(err)
+				}
+				resolve(docs)
+			})
+		})
+	}
+
 	async findOne(query: any): Promise<any> {
 		return new Promise((resolve, reject) => {
 			ClientDb.getInstance().getCollection(this.collectionName).find(query).toArray((err: any, docs: any) => {
@@ -54,18 +65,29 @@ class CollectionDb {
 
 	async updateOne(query: any, data: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			ClientDb.getInstance().getCollection(this.collectionName).deleteOne(query).toArray((err: any, docs: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).updateOne(query, data, (err: any, res: any) => {
 				if (err) {
 					reject(err)
 				}
-				resolve(docs)
+				resolve(res)
 			})
 		})
 	}
 
 	async deleteOne(query: any): Promise<any> {
 		return new Promise((resolve, reject) => {
-			ClientDb.getInstance().getCollection(this.collectionName).deleteOne(query).toArray((err: any, docs: any) => {
+			ClientDb.getInstance().getCollection(this.collectionName).deleteOne(query, (err: any, res: any) => {
+				if (err) {
+					reject(err)
+				}
+				resolve(res)
+			})
+		})
+	}
+
+	async count(): Promise<number> {
+		return new Promise((resolve, reject) => {
+			ClientDb.getInstance().getCollection(this.collectionName).countDocuments((err: any, docs: any) => {
 				if (err) {
 					reject(err)
 				}
