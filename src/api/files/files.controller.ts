@@ -7,7 +7,8 @@ import { predictImage, readImageFromFile } from '../../utils/ai'
 
 export async function get({ params: { type, file: fileName } }: Request, res: Response, next: NextFunction) {
 	try {
-		console.log(`${__dirname}/../../files/${type}/${fileName}`)
+		console.log('files, get:', type, fileName)
+
 		const file = fs.readFileSync(`${__dirname}/../../files/${type}/${fileName}`)
 
 		res.send(file)
@@ -18,6 +19,8 @@ export async function get({ params: { type, file: fileName } }: Request, res: Re
 
 export async function predict({ file }: Request, res: Response, next: NextFunction) {
 	try {
+		console.log('files, predict')
+
 		const image = readImageFromFile(file)
 		const prediction = await predictImage(image)
 

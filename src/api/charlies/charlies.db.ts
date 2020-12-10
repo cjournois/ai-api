@@ -11,7 +11,6 @@ class CharliesDb extends CollectionDb {
 	}
 
 	public async search({ query: { sort } }: Request) {
-		console.log('search')
 		const filers: any = {}
 		if (sort) {
 			const [field, orderBy] = (<string> sort).split('|')
@@ -21,22 +20,18 @@ class CharliesDb extends CollectionDb {
 	}
 
 	public async create({ body }: Request): Promise<any> {
-		console.log('create:', body)
 		return super.create(body as ICharlie)
 	}
 
 	public async findOne({ params: { id } }: Request): Promise<any> {
-		console.log('findOne:', id)
 		return super.findOne({ _id: new ObjectId(id) })
 	}
 
 	public async updateOne({ params: { id }, body }: Request): Promise<void> {
-		console.log('updateOne:', id, body)
 		return super.updateOne({ _id: new ObjectId(id) }, body)
 	}
 
 	public async deleteOne({ params: { id } }: Request): Promise<void> {
-		console.log('deleteOne')
 		return super.deleteOne({ _id: new ObjectId(id) })
 	}
 }
