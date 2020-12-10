@@ -84,10 +84,8 @@ export async function random(req: Request, res: Response, next: NextFunction) {
 		randomAnimal.choices = shuffle([
 			randomAnimal.type,
 			...shuffle(Object.values(Animal)
-				.filter((type) => (
-					type !== randomAnimal.type)
-				))
-				.slice(0, 3)
+				.filter((type) => type !== randomAnimal.type))
+				.slice(0, 3),
 		])
 
 		res.json(randomAnimal)
@@ -118,7 +116,7 @@ export async function predict(req: Request, res: Response, next: NextFunction) {
 		res.json({
 			_id: predictionId,
 			animal,
-			prediction
+			prediction,
 		})
 	} catch (err) {
 		next(err)

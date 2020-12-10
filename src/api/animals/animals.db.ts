@@ -1,5 +1,4 @@
 import { ObjectId } from 'mongodb'
-import { Request } from 'express'
 
 import CollectionDb from '../../utils/mongodb/CollectionDb'
 import { CollectionName } from '../../utils/enums'
