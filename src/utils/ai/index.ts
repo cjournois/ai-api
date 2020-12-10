@@ -1,2 +1,2 @@
-export { default as findCharlie } from './findCharlie'
-export { default as readImage } from './readImage'
+export { default as predictImage } from './predictImage'
+export * from './readImage'
