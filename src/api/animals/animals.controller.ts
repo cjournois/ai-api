@@ -17,6 +17,7 @@ export async function findAll(req: Request, res: Response, next: NextFunction) {
 
 		const results = await AnimalsDb.findAll()
 
+		console.log(results.length)
 		res.json(results)
 	} catch (err) {
 		next(err)
@@ -84,7 +85,9 @@ export async function random(req: Request, res: Response, next: NextFunction) {
 		randomAnimal.choices = shuffle([
 			randomAnimal.type,
 			...shuffle(Object.values(Animal)
-				.filter((type) => type !== randomAnimal.type))
+				.filter((type) => (
+					type !== randomAnimal.type && type !== Animal.Touchard
+				)))
 				.slice(0, 3),
 		]).map((type) => ({
 			name: AnimalTypeToFr[type],

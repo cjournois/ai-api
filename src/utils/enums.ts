@@ -6,21 +6,27 @@ export const CollectionName = {
 
 export const Animal = {
 	Bear: 'bear',
+	Bird: 'bird',
 	Cat: 'cat',
 	Cow: 'cow',
-	Elephant: 'elephant',
 	Dog: 'dog',
+	Elephant: 'elephant',
+	Giraffe: 'giraffe',
+	Horse: 'horse',
 	Sheep: 'sheep',
 	Touchard: 'touchard',
-	Zebra: 'zebra'
+	Zebra: 'zebra',
 }
 
 export const AnimalTypeToFr = {
 	[Animal.Bear]: 'Ours',
+	[Animal.Bird]: 'Oiseau',
 	[Animal.Cat]: 'Chat',
 	[Animal.Cow]: 'Vache',
 	[Animal.Dog]: 'Chien',
 	[Animal.Elephant]: 'Eléphant',
+	[Animal.Giraffe]: 'Girafe',
+	[Animal.Horse]: 'Cheval',
 	[Animal.Sheep]: 'Mouton',
 	[Animal.Touchard]: 'Touchard',
 	[Animal.Zebra]: 'Zèbre',
