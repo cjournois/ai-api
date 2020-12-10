@@ -8,5 +8,12 @@ export const Animal = {
 	Bear: 'bear',
 	Cat: 'cat',
 	Dog: 'dog',
-	Lion: 'lion',
+	Touchard: 'touchard',
+}
+
+export const AnimalTypeToFr = {
+	[Animal.Bear]: 'Ours',
+	[Animal.Cat]: 'Chat',
+	[Animal.Dog]: 'Chien',
+	[Animal.Touchard]: 'Touchard',
 }

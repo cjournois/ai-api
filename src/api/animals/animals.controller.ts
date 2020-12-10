@@ -6,7 +6,7 @@ import PredictionsDb from '../predictions/predictions.db'
 
 import { predictImage, readImageFromPath } from '../../utils/ai'
 import { shuffle } from '../../utils/helpers'
-import { Animal } from '../../utils/enums'
+import { Animal, AnimalTypeToFr } from '../../utils/enums'
 import { IAnimal } from '../../models'
 
 //==================================================================================================
@@ -86,7 +86,10 @@ export async function random(req: Request, res: Response, next: NextFunction) {
 			...shuffle(Object.values(Animal)
 				.filter((type) => type !== randomAnimal.type))
 				.slice(0, 3),
-		])
+		]).map((type) => ({
+			name: AnimalTypeToFr[type],
+			type
+		}))
 
 		res.json(randomAnimal)
 	} catch (err) {
@@ -110,7 +113,7 @@ export async function predict(req: Request, res: Response, next: NextFunction) {
 			executedAt: timer,
 			score: Math.round(tempPrediction.score * 10000) / 100,
 			time: new Date().getTime() - timer.getTime(),
-			result: tempPrediction.class,
+			result: tempPrediction.class === 'person' ? Animal.Touchard : tempPrediction.class,
 		})
 
 		res.json({
