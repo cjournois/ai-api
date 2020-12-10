@@ -22,7 +22,7 @@ class CharliesDb extends CollectionDb {
 
 	public async create({ body }: Request): Promise<any> {
 		console.log('create:', body)
-		return super.create(<ICharlie>body)
+		return super.create(body as ICharlie)
 	}
 
 	public async findOne({ params: { id } }: Request): Promise<any> {

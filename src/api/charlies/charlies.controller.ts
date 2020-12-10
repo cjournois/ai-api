@@ -60,9 +60,7 @@ export async function deleteOne(req: Request, res: Response, next: NextFunction)
 export async function predict(req: Request, res: Response, next: NextFunction) {
 	try {
 		const { imagePath } = await CharliesDb.findOne(req)
-
 		const prediction = await findCharlie(`${__dirname}/../../files/${imagePath}`)
-		console.log(prediction)
 
 		res.json(prediction)
 	} catch (err) {
