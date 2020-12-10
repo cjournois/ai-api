@@ -1,9 +1,12 @@
 import * as fs from 'fs'
+import { Tensor3D } from '@tensorflow/tfjs'
 import { node } from '@tensorflow/tfjs-node'
 
-function readImage(path: string): any {
+export function readImageFromPath(path: string): Tensor3D {
 	const imageBuffer = fs.readFileSync(path)
-	return node.decodeImage(imageBuffer)
+	return <Tensor3D>node.decodeImage(imageBuffer)
 }
 
-export default readImage
+export function readImageFromFile(file: any): Tensor3D {
+	return <Tensor3D>node.decodeImage(file.buffer)
+}

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 
 import CharliesDb from './charlies.db'
-import { findCharlie } from '../../utils/ai'
+import { predictImage, readImageFromPath } from '../../utils/ai'
 
 //==================================================================================================
 
@@ -60,7 +60,8 @@ export async function deleteOne(req: Request, res: Response, next: NextFunction)
 export async function predict(req: Request, res: Response, next: NextFunction) {
 	try {
 		const { imagePath } = await CharliesDb.findOne(req)
-		const prediction = await findCharlie(`${__dirname}/../../files/${imagePath}`)
+		const image = readImageFromPath(`${__dirname}/../../files/${imagePath}`)
+		const prediction = await predictImage(image)
 
 		res.json(prediction)
 	} catch (err) {
