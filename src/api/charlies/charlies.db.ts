@@ -15,7 +15,7 @@ class CharliesDb extends CollectionDb {
 		const filers: any = {}
 		if (sort) {
 			const [field, orderBy] = (<string> sort).split('|')
-			filers[field] = orderBy === 'asc' ? 1 : -1
+			filers.$sort = { [field]: orderBy === 'asc' ? 1 : -1 }
 		}
 		return super.find(filers)
 	}
