@@ -1,13 +1,13 @@
 import { Router } from 'express'
 
-import { charliesRouter } from './charlies/charlies.router'
+import filesRouter from './files/files.router'
+import charliesRouter from './charlies/charlies.router'
 
-//======================================================================================================================
+//==================================================================================================
 
 const apiRouter = Router()
 
 apiRouter.use('/charlies', charliesRouter)
+apiRouter.use('/files', filesRouter)
 
-export {
-	apiRouter,
-}
+export default apiRouter

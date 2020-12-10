@@ -5,7 +5,7 @@ import bodyParser from 'body-parser'
 
 import config from './config'
 import ClientDb from './utils/mongodb/ClientDb'
-import { apiRouter } from './api'
+import apiRouter from './api'
 
 class App {
 	private app: Express | undefined

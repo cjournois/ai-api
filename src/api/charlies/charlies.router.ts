@@ -1,17 +1,16 @@
 import { Router } from 'express'
 
-import { create, deleteOne, findOne, search, updateOne } from './charlies.controller'
+import * as charlies from './charlies.controller'
 
-//======================================================================================================================
+//==================================================================================================
 
 const charliesRouter = Router()
 
-charliesRouter.get('/', search)
-charliesRouter.post('/', create)
-charliesRouter.get('/:id', findOne)
-charliesRouter.put('/:id', updateOne)
-charliesRouter.delete('/:id', deleteOne)
+charliesRouter.get('/', charlies.search)
+charliesRouter.post('/', charlies.create)
+charliesRouter.get('/:id', charlies.findOne)
+charliesRouter.put('/:id', charlies.updateOne)
+charliesRouter.delete('/:id', charlies.deleteOne)
+charliesRouter.get('/:id/predict', charlies.predict)
 
-export {
-	charliesRouter,
-}
+export default charliesRouter
