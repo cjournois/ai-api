@@ -1,0 +1,26 @@
+<annotation>
+  <folder>coco-ssd</folder>
+  <filename>7_6_2</filename>
+  <path>C:\Users\cjournois\ai-api\src\dataset\coco-ssd\7_6_2.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>128</width>
+    <height>128</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>charlie</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>20</xmin>
+      <ymin>95</ymin>
+      <xmax>49</xmax>
+      <ymax>125</ymax>
+    </bndbox>
+  </object>
+</annotation>

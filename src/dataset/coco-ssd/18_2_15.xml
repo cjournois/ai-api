@@ -1,0 +1,26 @@
+<annotation>
+  <folder>waldo</folder>
+  <filename>18_2_15</filename>
+  <path>C:\Users\cjournois\ai-api\src\dataset\64\waldo\18_2_15.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>64</width>
+    <height>64</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>charlie</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>1</xmin>
+      <ymin>1</ymin>
+      <xmax>22</xmax>
+      <ymax>37</ymax>
+    </bndbox>
+  </object>
+</annotation>
