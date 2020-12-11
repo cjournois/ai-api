@@ -1,0 +1,18 @@
+{
+	"server": {
+		"hostname": "127.0.0.1",
+		"port": 3001
+	},
+
+	"cors": {
+		"whitelist": [
+			"http://localhost:3001",
+			"http://localhost:3000"
+		]
+	},
+
+	"mongodb": {
+		"database": "test",
+		"url": "mongodb+srv://cesi:123@ai-db.jkkh4.mongodb.net/Ai-database"
+	}
+}

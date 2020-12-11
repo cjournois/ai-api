@@ -1,0 +1,5 @@
+export type { default as IAnimal } from './IAnimal'
+export type { default as ICharlie } from './ICharlie'
+export type { default as ILocation } from './ILocation'
+export type { default as IPrediction } from './IPrediction'
+export type { default as IVector } from './IVector'

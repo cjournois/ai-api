@@ -5,6 +5,7 @@ Mini project to handle data between **ai-project** and **mongodb**.
 ## Summary
 
 - [Development](#development)
+- [Resources](#resources)
 
 
 ## Development
@@ -20,3 +21,9 @@ Mini project to handle data between **ai-project** and **mongodb**.
 npm i
 npm run debug
 ```
+
+## Resources
+
+Special thanks to the bellowed projects and their creators:
+
+- [vc1492a/Hey-Waldo](https://github.com/vc1492a/Hey-Waldo)
